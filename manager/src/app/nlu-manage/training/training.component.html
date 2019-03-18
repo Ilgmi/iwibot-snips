@@ -1,0 +1,16 @@
+<h3>NLU Trainieren</h3>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-success" (click)="trainNlu()">NLU Trainieren</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-danger" (click)="roleBack()">NLU auf den Vorherigen Stand setzen</button>
+  </div>
+</div>
+<div *ngIf="!showSpinner" class="row">
+  <div class="col">
+    {{status}}
+  </div>
+</div>
+
+<app-spinner [showSpinner]="showSpinner"></app-spinner>

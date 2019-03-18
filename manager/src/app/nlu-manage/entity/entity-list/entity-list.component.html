@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col">
+    <h3>Entity</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <input #newEntity type="text" class="form-control">
+  </div>
+  <div class="col">
+    <button class="btn btn-success" (click)="addNewEntity(newEntity.value); newEntity.value = ''">Add</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <label for="build-ins" >Build In Entities</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <select id="build-ins" class="form-control" #selectedElement>
+      <option *ngFor="let e of buildInEntities" [value]="e">{{e}}</option>
+    </select>
+  </div>
+  <div class="col">
+    <button class="btn btn-success" (click)="addBuildIn(selectedElement.value)">Add</button>
+  </div>
+</div>
+<div>
+</div>
+<div *ngIf="entities !== null">
+  <div class="d-flex flex-wrap align-content-start mt-2">
+    <div class="card mr-2 mt-2" style="width: 250px;" *ngFor="let entityKey of entities.getKeys()">
+      <div class="card-header">
+        {{entityKey}}
+      </div>
+      <div class="card-body">
+        <a *ngIf="!isBuildIn(entityKey)" class="btn btn-primary mr-2" [routerLink]="'/entity/' + entityKey">Edit</a>
+        <button class="btn btn-danger" (click)="deleteEntity(entityKey)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</div>
